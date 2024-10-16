@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import PostsList from './components/PostsList';
+import PostDetails from './components/PostDetails';
+import EditPost from './components/EditPost';
+import Navigation from './components/Navigation';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<PostsList />} />
+        <Route path="/posts/:id" element={<PostDetails />} />
+        <Route path="/posts/:id/edit" element={<EditPost />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
